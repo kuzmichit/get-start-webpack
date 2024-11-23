@@ -52,8 +52,21 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /.scss$/i,
-        use: ['sass-loader'],
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: "sass-loader",
+            options: {
+              api: "modern",
+              sassOptions: {
+                // Your sass options
+								// options: {
+								// 	sourceMap: true,
+								// },
+              },
+            },
+					},
+        ],
       },
     ],
   },
