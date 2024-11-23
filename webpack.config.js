@@ -23,13 +23,6 @@ module.exports = {
   devServer: {
     hot: true,
     port: 3000,
-
-    // open: {
-    //   app: {
-    //     name: 'firefox',
-    //     arguments: ['--incognito', '--new-window'],
-    //   },
-    // },
   },
 
   plugins: [

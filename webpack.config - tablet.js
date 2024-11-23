@@ -10,39 +10,18 @@ if (process.env.NODE_ENV === 'production') { // Режим production, если
 
 module.exports = {
   entry: './src/index.js',
-  output: {
-    filename: 'bundle.[chunkhash].js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-
-  devtool: 'source-map',
   mode,
 
   devServer: {
     hot: true,
-    port: 3000,
-
-    open: {
-      app: {
-       name: 'firefox',
-       arguments: ['--incognito', '--new-window'],
-     },
-   },
+    port: 9950,
   },
 
 
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
-
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css', // Формат имени файла
-        }),
- 
+  plugins: [ 
   ],
+
   module: {
     rules: [
       { test: /\.(html)$/,
@@ -51,6 +30,23 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+			{
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: "sass-loader",
+            options: {
+              api: "modern",
+              sassOptions: {
+                // Your sass options
+								// options: {
+								// 	sourceMap: true,
+								// },
+              },
+            },
+					},
+        ],
       },
     ],
   },
